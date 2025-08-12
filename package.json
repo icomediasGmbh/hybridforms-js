@@ -73,8 +73,8 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/IcoDeveloper/hybridforms-js"
+        "url": "https://github.com/icomediasGmbh/hybridforms-js"
     },
     "homepage": "https://www.hybridforms.net",
-    "bugs": "https://github.com/IcoDeveloper/hybridforms-js/issues"
+    "bugs": "https://github.com/icomediasGmbh/hybridforms-js/issues"
 }
