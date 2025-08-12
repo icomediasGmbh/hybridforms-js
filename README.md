@@ -6,7 +6,7 @@
 
 A Typescript/Javascript isomorphic library, for use in HybridForms forms and Node.js.
 
-Typedoc: [https://icodeveloper.github.io/hybridforms-js/](https://icomediasgmbh.github.io/hybridforms-js/)
+Typedoc: [https://icomediasgmbh.github.io/hybridforms-js/](https://icomediasgmbh.github.io/hybridforms-js/)
 
 ## Table of Contents
 
