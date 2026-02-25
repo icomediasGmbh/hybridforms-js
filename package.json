@@ -27,6 +27,7 @@
         "@eslint/js": "^10.0.1",
         "@types/chai": "^5.2.3",
         "@types/chai-uuid": "^1.0.6",
+        "@types/eslint-scope": "^8.4.0",
         "@types/mocha": "^10.0.10",
         "@types/node": "^25.3.0",
         "bundle-declarations-webpack-plugin": "^6.0.0",

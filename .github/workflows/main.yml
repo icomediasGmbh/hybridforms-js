@@ -24,7 +24,7 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: npm install
+            - run: npm ci
             - name: Run test with Node.js ${{ matrix.node-version }}
               run: npm run test-node
               env:
@@ -40,6 +40,6 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: npm install
+            - run: npm ci
             - name: Run eslint
               run: npm run lint

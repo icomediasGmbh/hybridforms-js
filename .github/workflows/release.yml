@@ -24,7 +24,7 @@ jobs:
                   node-version: ${{ matrix.node }}
 
             - run: |
-                  npm i
+                  npm ci
                   npm run build
 
             - name: Create a release
