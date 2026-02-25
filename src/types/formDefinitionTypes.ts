@@ -212,10 +212,7 @@ interface IControlCondition {
     conditionControls?: IControlConditions;
 }
 
-interface IControlConditions {
-    // id of the HFWinJSCtrl.Condition, key is the id of the condition control
-    [conditionCtrlId: string]: IControlCondition;
-}
+type IControlConditions = Record<string, IControlCondition>;
 
 /**
  *  HybridForms Validation
@@ -232,11 +229,11 @@ interface IFieldValidator {
     decimals?: number;
     pattern?: string;
     anytext?: boolean;
-    allowedValues?: Array<{ value: string; text?: string }>;
+    allowedValues?: { value: string; text?: string }[];
     custom?: string;
     jsonSchema?: any;
-    errorText?: string | { [key: string]: string };
-    errorHTML?: string | { [key: string]: string };
+    errorText?: string | Record<string, string>;
+    errorHTML?: string | Record<string, string>;
 }
 
 /**
@@ -269,7 +266,7 @@ interface IField {
     value: string;
     defaultValue: string;
     htmlTag: string;
-    options: { [key: string]: any };
+    options: Record<string, any>;
     format?: string;
     repeatableDefaultId?: string;
     validator: IFieldValidator;
@@ -315,9 +312,7 @@ interface IBlock {
  */
 
 interface IRepeatableDataSource {
-    mapping: {
-        [key: string]: DataSourceMappingEntryType;
-    };
+    mapping: Record<string, DataSourceMappingEntryType>;
     target?: string | string[];
     onChanged?: string;
 }
@@ -696,11 +691,11 @@ interface IReachoutStrings {
 interface IReachoutSettings {
     maxTime?: number; // in minutes
     minTime?: number; // in minutes
-    strings?: IReachoutStrings & { [stageId: string]: IReachoutStrings };
+    strings?: IReachoutStrings & Record<string, IReachoutStrings>;
     preview?: IReachoutViewSetting;
     pdfView?: IReachoutViewSetting;
     pdfName?: string;
-    pdfNames?: { [stageKey: string]: string };
+    pdfNames?: Record<string, string>;
 }
 
 interface IPDFSettings {

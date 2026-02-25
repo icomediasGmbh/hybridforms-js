@@ -74,7 +74,7 @@ export const resolveRequest = (
     if (customRequest) {
         return customRequest;
     } else if (typeof fetch === 'undefined') {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         const nodeFetch = require('node-fetch') as unknown as Fetch;
         return async (obj: XhrRequest) => await fetchRequest(obj, nodeFetch);
     } else {

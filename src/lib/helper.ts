@@ -13,9 +13,7 @@ export const getUrl = (
     return urlInstance.toString();
 };
 
-export const paramsFromObject = (obj: {
-    [key: string]: any;
-}): URLSearchParams => {
+export const paramsFromObject = (obj: Record<string, any>): URLSearchParams => {
     const params = new URLSearchParams();
     Object.keys(obj).forEach((key) => {
         params.append(key, obj[key]);

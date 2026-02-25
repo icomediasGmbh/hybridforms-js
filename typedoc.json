@@ -1,9 +1,8 @@
 {
     "$schema": "https://typedoc.org/schema.json",
-    "entryPoints": [
-        "./src",
-    ],
+    "entryPoints": ["./src"],
     "entryPointStrategy": "expand",
     "out": "docs",
     "searchInComments": true,
+    "plugin": ["typedoc-github-theme", "typedoc-plugin-mdn-links"]
 }

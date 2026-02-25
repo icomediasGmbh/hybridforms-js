@@ -62,7 +62,7 @@ export interface GetCatalogResponse {
 }
 
 export interface ODataResult {
-    results: Array<{ [key: string]: string }>;
+    results: Record<string, string>[];
     __count: number | null;
     __next: number | null;
 }
