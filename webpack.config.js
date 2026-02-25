@@ -1,9 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const {
-    BundleDeclarationsWebpackPlugin
-} = require('bundle-declarations-webpack-plugin');
 
 const entry = './src/index.ts';
 
@@ -46,16 +43,6 @@ module.exports = {
         }),
         new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1
-        }),
-        new BundleDeclarationsWebpackPlugin({
-            entry: {
-                filePath: entry,
-                output: {
-                    umdModuleName: 'HybridFormsJS',
-                    noBanner: true
-                }
-            },
-            outFile: 'hybridforms.d.ts'
         })
     ]
 };
