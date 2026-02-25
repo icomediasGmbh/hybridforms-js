@@ -17,6 +17,7 @@
             "es2022",
             "dom"
         ],
+        "skipLibCheck": true,
         "strict": true,
         "esModuleInterop": true,
         "moduleResolution": "Node",
