@@ -12,7 +12,7 @@ jobs:
         strategy:
             matrix:
                 os: [ubuntu-latest]
-                node: [20.x]
+                node: [22.x]
 
         runs-on: ${{ matrix.os }}
         permissions:
@@ -35,4 +35,4 @@ jobs:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: docs
                   force_orphan: true
-                  commit_message: 'docs: update'
+                  commit_message: "docs: update"
