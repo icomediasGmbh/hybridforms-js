@@ -14,7 +14,11 @@ jobs:
                 node: [22.x]
         runs-on: ubuntu-latest
         permissions:
-            contents: write
+            # Required to mint an OIDC token for npm provenance attestation.
+            id-token: write
+            # Scoped down from the default (write) for least-privilege publishing.
+            contents: read
+
         steps:
             - uses: actions/checkout@v4
 
