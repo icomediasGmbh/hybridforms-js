@@ -18,6 +18,8 @@ Typedoc: [https://icomediasgmbh.github.io/hybridforms-js/](https://icomediasgmbh
   - [Usage](#usage)
     - [UMD](#umd)
     - [Custom `xhr` implementation](#custom-xhr-implementation)
+  - [Tests](#tests)
+    - [The fake server](#the-fake-server)
   - [Contribute](#contribute)
   - [License](#license)
 
@@ -107,6 +109,59 @@ const hybridforms = createClient({
     xhr: HybridForms.API.XHR.request
 })
 ```
+
+## Tests
+
+```
+npm test              # lint, then run the suite once
+npm run test:watch    # vitest in watch mode
+npm run test:coverage # suite plus a v8 coverage report
+```
+
+The suite runs on [vitest](https://vitest.dev) and needs no network access, no
+credentials and no HybridForms deployment. Every request goes to a fake server
+started inside the test process.
+
+### The fake server
+
+`test/server/` holds an in-process stand-in for a HybridForms Core Server:
+
+| File | Purpose |
+| --- | --- |
+| `fakeServer.ts` | Router and `node:http` plumbing: path matching, the request log, response encoding |
+| `hybridForms.ts` | `createHybridFormsServer()` — wires state, routes and the auth guard together |
+| `state.ts` | Per-instance mutable state (issued tokens, form items, catalogs) |
+| `fixtures.ts` | Canonical response data and file bodies |
+| `routes/` | One module per API area, plus `/__test__/*` routes used to drive `src/lib/fetch.ts` |
+
+Each spec file starts its own server on an ephemeral port, so files run in
+parallel without interfering:
+
+```ts
+let server: FakeServerHandle
+
+beforeAll(async () => {
+    server = await createHybridFormsServer({ loginMethod: 'ADFS' })
+})
+afterAll(async () => await server.close())
+beforeEach(() => server.reset())
+
+it('lists form definitions', async () => {
+    const response = await clientFor(server).formDefinitions.getFormDefinitions()
+    expect(response.response).to.have.length(2)
+})
+```
+
+`createHybridFormsServer()` takes a `loginMethod` (`ADFS`, `AzureAD`,
+`WindowsAuthentication`), a `tokenLifetimeSeconds` (pass a negative value to
+force token refresh) and `gatewayOverrides` for reshaping `/api/app/gatewayData`.
+
+The handle exposes `state` for inspecting server-side effects, `requests` /
+`requestsFor(path)` for asserting on what the client actually sent,
+`clearRequests()` to empty the log while keeping state, and `reset()` for both.
+
+Writes are real: `createCatalog` then `getCatalog` reads back what was written,
+and `simpleAPI.post()` creates an item that `forms.listForms()` then returns.
 
 ## Contribute
 

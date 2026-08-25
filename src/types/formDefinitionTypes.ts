@@ -143,10 +143,7 @@ type ConditionExpressionType =
     | 'cordova'
     | 'electron';
 type ConditionExpressionElse =
-    | 'invisible'
-    | 'disabled'
-    | 'readonly'
-    | 'optional';
+    'invisible' | 'disabled' | 'readonly' | 'optional';
 type ConditionExpressionVal = boolean | number | string;
 type ConditionExpressionValOp =
     | 'equals'
@@ -318,8 +315,7 @@ interface IRepeatableDataSource {
 }
 
 type DataSourceMappingEntryType =
-    | DataSourceFieldIdType
-    | DataSourceCallbackType;
+    DataSourceFieldIdType | DataSourceCallbackType;
 
 interface DataSourceCallbackType {
     sourceIds: DataSourceFieldIdType[];

@@ -9,8 +9,7 @@ export default defineConfig(
         languageOptions: {
             globals: {
                 ...globals.node,
-                ...globals.es6,
-                ...globals.mocha
+                ...globals.es6
             }
         }
     },
