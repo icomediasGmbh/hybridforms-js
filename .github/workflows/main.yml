@@ -12,7 +12,7 @@ env:
     HF_PASSWORD: ${{ secrets.HF_PASSWORD }}
 
 jobs:
-    test-node:
+    test:
         runs-on: ubuntu-latest
         timeout-minutes: 10
         strategy:
@@ -26,7 +26,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - run: npm ci
             - name: Run test with Node.js ${{ matrix.node-version }}
-              run: npm run test-node
+              run: npm run test
               env:
                   CI: true
     lint:

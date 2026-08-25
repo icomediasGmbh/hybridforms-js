@@ -11,8 +11,8 @@
         "clear": "rimraf dist/* && rimraf dist-umd.zip && rimraf dist.zip",
         "prettier": "prettier src --write",
         "lint": "eslint src test --fix",
-        "test": "npm run lint && vitest run",
         "docs": "typedoc",
+        "test": "vitest run",
         "test:watch": "vitest",
         "test:coverage": "vitest run --coverage"
     },
